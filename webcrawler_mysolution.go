@@ -62,11 +62,11 @@ func main() {
 	branch := make(chan int)
 
 	branchesPlusRoot := 1
-	founded := 0
+	
 
 	go sc.Crawl("https://golang.org/", 4, fetcher, ch, cached, branch)
 
-	for i := -1; i < branchesPlusRoot; i = founded {
+	for founded := 0; founded < branchesPlusRoot; {
 
 		select {
 		case newUrl := <-ch:
